@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek
+    get_week
     @plan = Plan.new
   end
 
@@ -30,7 +30,7 @@ class CalendarsController < ApplicationController
     plans = Plan.where(date: @todays_date..@todays_date + 6)
 
     7.times do |x|
-      today.plans = []
+      today_plans = []
       plan = plans.map do |plan|
         today_plans.push(plan.plan) if plan_date == @todays_date + x
       end
